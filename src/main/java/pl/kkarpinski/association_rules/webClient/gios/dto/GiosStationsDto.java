@@ -6,10 +6,8 @@ import lombok.Getter;
  * Created by kkarp.
  */
 @Getter
-public class GiosGiosDto {
+public class GiosStationsDto {
 
-    private GiosCommuneDto commune;
-    private GiosStationsCityDto city;
     private String addressStreet;
     private String gegrLat;
     private String gegrLon;

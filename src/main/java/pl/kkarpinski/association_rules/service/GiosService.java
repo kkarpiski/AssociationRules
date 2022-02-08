@@ -45,7 +45,6 @@ public class GiosService {
                 String stationkey = (String) stationKeys.next();
                 Object stationValue = stationIndexObj.get(stationkey);
                 System.out.println(stationkey + " : " + stationValue);
-                System.out.println(stationkey + " : " + stationValue);
 
         }
 

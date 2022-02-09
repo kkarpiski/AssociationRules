@@ -23,6 +23,7 @@ import java.util.List;
 public class GiosService {
 
     private final GiosClient giosClient;
+    int d = 0;
 
     public String getGiosData() throws JSONException {
 
@@ -57,27 +58,23 @@ public class GiosService {
                 JSONObject obj = sensorArray.getJSONObject(o);
                 String id = obj.getString("id");
                 sensorsIdList.add(id);
-            }
-            for (String value : sensorsIdList) {
 
-                log.info(String.valueOf(value));
-                JSONObject sensorDataObj = new JSONObject(giosClient.getSensorData(value));
-                log.info(String.valueOf(sensorDataObj));
-                Iterator keys = sensorDataObj.keys();
-                while (keys.hasNext()) {
-                    String key = (String) keys.next();
-                    Object sensorValue = sensorDataObj.get(key);
-                    System.out.println(key + " : " + sensorValue);
-                }
+            }
+        }
+        for (String value : sensorsIdList) {
+            log.info(String.valueOf(value));
+            JSONObject sensorDataObj = new JSONObject(giosClient.getSensorData(value));
+            log.info(String.valueOf(sensorDataObj));
+            Iterator keys = sensorDataObj.keys();
+            while (keys.hasNext()) {
+                String key = (String) keys.next();
+                Object sensorValue = sensorDataObj.get(key);
+                System.out.println(key + " : " + sensorValue);
             }
         }
         return null;
     }
-
-    public void getGegrLatAndLon() {
-
-
-    }
 }
+
 
 

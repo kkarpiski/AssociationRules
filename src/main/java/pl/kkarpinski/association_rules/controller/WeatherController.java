@@ -19,6 +19,7 @@ public class WeatherController {
     @GetMapping("/weather")
     public WeatherDto getWeather(){
         return weatherService.getWeather();
+
     }
 
 

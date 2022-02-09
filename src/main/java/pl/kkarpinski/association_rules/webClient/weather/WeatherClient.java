@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.kkarpinski.association_rules.model.WeatherDto;
 import pl.kkarpinski.association_rules.webClient.weather.dto.OpenWeatherWeatherDto;
+import pl.kkarpinski.association_rules.webClient.gios.GiosClient;
 
 /**
  * Created by kkarp.

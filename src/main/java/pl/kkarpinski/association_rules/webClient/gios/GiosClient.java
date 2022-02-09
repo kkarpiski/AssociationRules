@@ -3,6 +3,7 @@ package pl.kkarpinski.association_rules.webClient.gios;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.kkarpinski.association_rules.model.GiosDto;
+import pl.kkarpinski.association_rules.service.GiosService;
 import pl.kkarpinski.association_rules.webClient.gios.dto.GiosGiosDto;
 
 
@@ -51,6 +52,12 @@ public class GiosClient {
         return callGetMethod("aqindex/getIndex/{stationId}",
                 String.class,
                 stationId);
+    }
+
+    public String getGegrLatAndLon(String gegrLat, String gegerLon) {
+
+
+        return null;
     }
 
 

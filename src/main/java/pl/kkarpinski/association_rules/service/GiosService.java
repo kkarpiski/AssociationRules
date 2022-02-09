@@ -8,6 +8,7 @@ import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 import pl.kkarpinski.association_rules.webClient.gios.GiosClient;
 
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -28,15 +29,16 @@ public class GiosService {
         JSONArray allStationsJsonArray = new JSONArray(giosClient.getAllStations("id"));
         log.info(String.valueOf(allStationsJsonArray));
 
-        List stationsIdList = new ArrayList();
-        List sensorsIdList = new ArrayList();
+        List<String> stationsIdList = new ArrayList<>();
+        List<String> sensorsIdList = new ArrayList<>();
 
         for (int i = 0; i < allStationsJsonArray.length(); i++) {
-            Object allStationValue = allStationsJsonArray.get(i);
             JSONObject item = allStationsJsonArray.getJSONObject(i);
             String id = item.getString("id");
+            String lat = item.getString("gegrLat");
+            String lon = item.getString("gegrLon");
             stationsIdList.add(id);
-            
+
 
             JSONObject stationIndexObj = new JSONObject(giosClient.getStationIndex(id));
             log.info(String.valueOf(stationIndexObj));
@@ -45,32 +47,37 @@ public class GiosService {
                 String stationkey = (String) stationKeys.next();
                 Object stationValue = stationIndexObj.get(stationkey);
                 System.out.println(stationkey + " : " + stationValue);
+            }
 
         }
+        for (String s : stationsIdList) {
+            JSONArray sensorArray = new JSONArray(giosClient.findSensors(s));
+            log.info(String.valueOf(sensorArray));
+            for (int o = 0; o < sensorArray.length(); o++) {
+                JSONObject obj = sensorArray.getJSONObject(o);
+                String id = obj.getString("id");
+                sensorsIdList.add(id);
+            }
+            for (String value : sensorsIdList) {
 
-        }
-            for (int b = 0; b < stationsIdList.size(); b++) {
-                log.info(String.valueOf(sensorsIdList.get(b)));
-            JSONObject sensorDataObj = new JSONObject(giosClient.getSensorData((String) sensorsIdList.get(b)));
-            log.info(String.valueOf(sensorDataObj));
-            Iterator keys = sensorDataObj.keys();
-            while (keys.hasNext()) {
-                String key = (String) keys.next();
-                Object sensorValue = sensorDataObj.get(key);
-                System.out.println(key + " : " + sensorValue);
-
-                JSONArray sensorArray = new JSONArray(giosClient.findSensors((String) stationsIdList.get(b)));
-                log.info(String.valueOf(sensorArray));
-                for (int o = 0; o < sensorArray.length(); o++) {
-                    Object findSensorValue = sensorArray.get(o);
-                    JSONObject obj = sensorArray.getJSONObject(o);
-                    String id = obj.getString("id");
-                    sensorsIdList.add(id);
+                log.info(String.valueOf(value));
+                JSONObject sensorDataObj = new JSONObject(giosClient.getSensorData(value));
+                log.info(String.valueOf(sensorDataObj));
+                Iterator keys = sensorDataObj.keys();
+                while (keys.hasNext()) {
+                    String key = (String) keys.next();
+                    Object sensorValue = sensorDataObj.get(key);
+                    System.out.println(key + " : " + sensorValue);
                 }
             }
-
-            }
-            return null;
         }
+        return null;
+    }
 
+    public void getGegrLatAndLon() {
+
+
+    }
 }
+
+

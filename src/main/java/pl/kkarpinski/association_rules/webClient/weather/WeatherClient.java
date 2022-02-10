@@ -31,7 +31,10 @@ public class WeatherClient {
                 .humidity(openWeatherWeatherDto.getMain().getHumidity())
                 .windSpeed(openWeatherWeatherDto.getWind().getSpeed())
                 .build();
+
     }
+
+
 
     private <T> T callGetMethod(String url, Class<T> responseType, Object... objects) {
         return restTemplate.getForObject(API_BASE_ADDRESS + url,

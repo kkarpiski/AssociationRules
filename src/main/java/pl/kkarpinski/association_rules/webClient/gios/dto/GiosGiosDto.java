@@ -15,5 +15,6 @@ public class GiosGiosDto {
     private String gegrLon;
     private int id;
     private String stationName;
+    private String stationId;
 
 }

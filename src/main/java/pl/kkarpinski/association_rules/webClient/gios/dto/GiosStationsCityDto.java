@@ -8,7 +8,6 @@ import lombok.Getter;
 @Getter
 public class GiosStationsCityDto {
 
-    private int id;
     private String name;
 
 }

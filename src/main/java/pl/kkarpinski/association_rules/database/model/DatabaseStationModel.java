@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 /**
  * Created by kkarp.
  */
+
 @Getter
 @Setter
 @ToString
@@ -21,7 +22,6 @@ public class DatabaseStationModel {
     private String stationName;
     private String gegrLat;
     private String gegrLon;
-
 
     public DatabaseStationModel(String stationName, String gegrLat, String gegrLon){
         this.stationName = stationName;

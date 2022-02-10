@@ -3,14 +3,13 @@ package pl.kkarpinski.association_rules.webClient.gios;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.kkarpinski.association_rules.model.GiosDto;
-import pl.kkarpinski.association_rules.service.GiosService;
 import pl.kkarpinski.association_rules.webClient.gios.dto.GiosGiosDto;
+import pl.kkarpinski.association_rules.webClient.gios.dto.GiosStationsDto;
 
 
 /**
  * Created by kkarp.
  */
-
 
 @Component
 public class GiosClient {
@@ -29,6 +28,15 @@ public class GiosClient {
                 .stationLon(giosGiosDto.getGegrLon())
                 .addressStreet(giosGiosDto.getAddressStreet())
                 .build();
+    }
+
+    public GiosDto getIdFromStations(){
+        GiosStationsDto giosStationsDto = callGetMethod("station/findAll",
+                GiosStationsDto.class);
+        return GiosDto.builder()
+                .stationId(giosStationsDto.getId())
+                .build();
+
     }
 
     public String getAllStations(String id) {

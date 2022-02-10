@@ -1,4 +1,4 @@
-package pl.kkarpinski.association_rules.database.repository;
+package pl.kkarpinski.association_rules.enums.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

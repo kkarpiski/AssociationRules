@@ -15,5 +15,7 @@ public class GiosDto {
     private String stationLat;
     private String stationLon;
     private String addressStreet;
+    private String communeName;
+    private String districtName;
 
 }

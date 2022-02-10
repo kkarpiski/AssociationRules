@@ -2,10 +2,12 @@ package pl.kkarpinski.association_rules.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.Document;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
+import pl.kkarpinski.association_rules.model.GiosDto;
 import pl.kkarpinski.association_rules.webClient.gios.GiosClient;
 
 
@@ -23,7 +25,6 @@ import java.util.List;
 public class GiosService {
 
     private final GiosClient giosClient;
-    int d = 0;
 
     public String getGiosData() throws JSONException {
 
@@ -32,6 +33,9 @@ public class GiosService {
 
         List<String> stationsIdList = new ArrayList<>();
         List<String> sensorsIdList = new ArrayList<>();
+        List<String> gegerLatList = new ArrayList<>();
+        List<String> gegerLonList = new ArrayList<>();
+
 
         for (int i = 0; i < allStationsJsonArray.length(); i++) {
             JSONObject item = allStationsJsonArray.getJSONObject(i);
@@ -39,6 +43,8 @@ public class GiosService {
             String lat = item.getString("gegrLat");
             String lon = item.getString("gegrLon");
             stationsIdList.add(id);
+            gegerLatList.add(lat);
+            gegerLonList.add(lon);
 
 
             JSONObject stationIndexObj = new JSONObject(giosClient.getStationIndex(id));
@@ -72,9 +78,16 @@ public class GiosService {
                 System.out.println(key + " : " + sensorValue);
             }
         }
+
+        for(String item : gegerLatList) {
+            System.out.println(item);
+           // log.info(item);
+        }
+
+        for(String item : gegerLonList) {
+            System.out.println(item);
+           // log.info(item);
+        }
         return null;
     }
 }
-
-
-

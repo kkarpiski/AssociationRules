@@ -1,19 +1,17 @@
 package pl.kkarpinski.association_rules.database.mongoDb;
 
-import com.mongodb.MongoException;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.InsertOneResult;
-import org.bson.types.ObjectId;
-
 import org.bson.Document;
-import java.util.Arrays;
+
 
 /**
  * Created by kkarp.
  */
+
 public class MongoDbConnection {
     public static void main(String[] args) {
         // Replace the uri string with your MongoDB deployment's connection string

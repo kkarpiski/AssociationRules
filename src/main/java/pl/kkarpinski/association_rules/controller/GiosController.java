@@ -19,7 +19,6 @@ public class GiosController {
     @GetMapping("/gios")
     public String getGios() throws JSONException {
         return giosService.getGiosData();
-      //  return giosService.getDataFromAllStatons();
     }
 
 

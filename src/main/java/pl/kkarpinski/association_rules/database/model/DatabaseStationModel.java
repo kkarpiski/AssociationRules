@@ -23,6 +23,8 @@ public class DatabaseStationModel {
     private String gegrLat;
     private String gegrLon;
 
+    public DatabaseStationModel() {}
+
     public DatabaseStationModel(String stationName, String gegrLat, String gegrLon){
         this.stationName = stationName;
         this.gegrLat = gegrLat;
@@ -61,4 +63,11 @@ public class DatabaseStationModel {
         this.gegrLon = gegrLon;
     }
 
+    @Override
+    public String toString() {
+        return String.format(
+                "DatabaseStationModel[id=%s, stationName='%s', gegrLat='%s', gegrLon='%s']",
+                id, stationName, gegrLat, gegrLon);
+    }
 }
+

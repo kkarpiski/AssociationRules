@@ -2,6 +2,7 @@ package pl.kkarpinski.association_rules.model;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.data.annotation.Id;
 
 /**
  * Created by kkarp.
@@ -10,9 +11,9 @@ import lombok.Getter;
 @Builder
 public class WeatherDto {
 
-    private float temperature;
-    private int pressure;
-    private int humidity;
-    private float windSpeed;
+    public float temperature;
+    public int pressure;
+    public int humidity;
+    public float windSpeed;
 
 }

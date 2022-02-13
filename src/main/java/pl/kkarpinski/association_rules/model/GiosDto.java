@@ -10,12 +10,12 @@ import lombok.Getter;
 @Builder
 public class GiosDto {
 
-    private int stationId;
-    private String stationName;
-    private String stationLat;
-    private String stationLon;
-    private String addressStreet;
-    private String communeName;
-    private String districtName;
+    public String stationId;
+    public String stationName;
+    public String stationLat;
+    public String stationLon;
+    public String addressStreet;
+    public String communeName;
+    public String districtName;
 
 }

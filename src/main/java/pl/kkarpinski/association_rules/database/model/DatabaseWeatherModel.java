@@ -19,9 +19,63 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class DatabaseWeatherModel {
 
     @Id
-    private int id;
-    private float temp;
-    private int pressure;
-    private int humidity;
+    public float temperature;
+    public int pressure;
+    public int humidity;
 
+    public DatabaseWeatherModel(){
+
+    }
+
+    public DatabaseWeatherModel(float temperature, int pressure, int humidity, float windSpeed) {
+        this.temperature = temperature;
+        this.pressure = pressure;
+        this.humidity = humidity;
+        this.windSpeed = windSpeed;
+    }
+
+    public float windSpeed;
+
+
+    public float getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
+    }
+
+    public int getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(int pressure) {
+        this.pressure = pressure;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
+
+    public float getWindSpeed() {
+        return windSpeed;
+    }
+
+    public void setWindSpeed(float windSpeed) {
+        this.windSpeed = windSpeed;
+    }
+
+    @Override
+    public String toString() {
+        return "WeatherDto{" +
+                "temperature=" + temperature +
+                ", pressure=" + pressure +
+                ", humidity=" + humidity +
+                ", windSpeed=" + windSpeed +
+                '}';
+    }
 }

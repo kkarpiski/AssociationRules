@@ -7,6 +7,8 @@ import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
+import pl.kkarpinski.association_rules.database.mongoDb.MongoDbConnection;
+import pl.kkarpinski.association_rules.database.repository.DatabaseStationRepository;
 import pl.kkarpinski.association_rules.model.GiosDto;
 import pl.kkarpinski.association_rules.webClient.gios.GiosClient;
 
@@ -36,6 +38,8 @@ public class GiosService {
         List<String> gegerLatList = new ArrayList<>();
         List<String> gegerLonList = new ArrayList<>();
 
+        System.out.println(gegerLatList);
+
 
         for (int i = 0; i < allStationsJsonArray.length(); i++) {
             JSONObject item = allStationsJsonArray.getJSONObject(i);
@@ -45,6 +49,8 @@ public class GiosService {
             stationsIdList.add(id);
             gegerLatList.add(lat);
             gegerLonList.add(lon);
+
+            System.out.println(allStationsJsonArray);
 
 
             JSONObject stationIndexObj = new JSONObject(giosClient.getStationIndex(id));
@@ -79,15 +85,7 @@ public class GiosService {
             }
         }
 
-        for(String item : gegerLatList) {
-            System.out.println(item);
-           // log.info(item);
-        }
-
-        for(String item : gegerLonList) {
-            System.out.println(item);
-           // log.info(item);
-        }
         return null;
     }
+
 }

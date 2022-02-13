@@ -6,7 +6,6 @@ import pl.kkarpinski.association_rules.model.GiosDto;
 import pl.kkarpinski.association_rules.webClient.gios.dto.GiosGiosDto;
 import pl.kkarpinski.association_rules.webClient.gios.dto.GiosStationsDto;
 
-
 /**
  * Created by kkarp.
  */
